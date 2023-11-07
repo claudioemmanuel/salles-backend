@@ -1,0 +1,15 @@
+# Create user
+# This request is used to create a new user on database.
+# The request body must contain the following fields:
+# - name: string
+# - email: string
+# - password: string
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@doe.com",
+  "password": "123456"
+}
+

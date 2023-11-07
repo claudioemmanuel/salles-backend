@@ -1,0 +1,4 @@
+# Get all users
+# This request retrieves all users from the database.
+GET http://localhost:3000/user
+Authorization: ''
