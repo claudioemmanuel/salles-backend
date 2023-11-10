@@ -9,12 +9,20 @@ export class UserController {
   @Post()
   async create(@Body() createUserDto: CreateUserDto) {
     try {
+
       const result = await this.usersService.createUser(createUserDto);
-      return { statusCode: HttpStatus.CREATED, data: result };
+      return {
+        statusCode: HttpStatus.CREATED,
+        data: result
+      };
 
     } catch (error) {
 
-      return { statusCode: HttpStatus.INTERNAL_SERVER_ERROR, message: error.message };
+      return {
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: error.message
+      };
+
     }
   }
 }
