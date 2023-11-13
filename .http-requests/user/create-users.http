@@ -4,7 +4,7 @@
 # - name: string
 # - email: string
 # - password: string
-POST http://localhost:3000/user
+POST http://localhost:3000/users
 Content-Type: application/json
 
 {

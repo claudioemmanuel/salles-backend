@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { UserModule } from './modules/user/user.module';
+import { UsersModule } from './modules/user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AddressModule } from './modules/address/address.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -22,8 +22,8 @@ import { AddressModule } from './modules/address/address.module';
       migrationsRun: true,
       logging: true,
     }),
-    UserModule,
-    AddressModule
+    UsersModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],

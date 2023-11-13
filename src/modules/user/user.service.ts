@@ -7,14 +7,21 @@ import { Repository } from 'typeorm';
 import { hash } from 'bcrypt';
 
 @Injectable()
-export class UserService {
+export class UsersService {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>
   ) { }
 
-  async createUser(createUserDto: CreateUserDto): Promise<User> {
-    const { name, email, password } = createUserDto;
+  async findByEmail(email: string): Promise<User> {
+    return this.userRepository.findOne({ where: { email } });
+  }
+
+  async createUser(
+    name: string,
+    email: string,
+    password: string
+  ): Promise<User> {
 
     const saltRounds = 10;
     const hashedPassword = await hash(password, saltRounds);

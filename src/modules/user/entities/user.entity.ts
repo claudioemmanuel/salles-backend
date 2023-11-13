@@ -1,5 +1,5 @@
-import { Address } from 'src/modules/address/entities/address.entity';
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from 'typeorm'
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -10,6 +10,7 @@ export class User extends BaseEntity {
   name: string;
 
   @Column()
+  @Unique(['email'])
   email: string;
 
   @Column()
@@ -20,7 +21,4 @@ export class User extends BaseEntity {
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   updated_at: Date;
-
-  @OneToMany(() => Address, address => address.user)
-  addresses: Address[];
 }

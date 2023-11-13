@@ -1,0 +1,12 @@
+# Sign-in request
+# This request is used to sign-in a user.
+# The request is sent to the server with the following parameters:
+# - email: the email of the user
+# - password: the password of the user
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "john@doe.com",
+  "password": "123456"
+}

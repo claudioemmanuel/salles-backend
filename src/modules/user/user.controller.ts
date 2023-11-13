@@ -1,16 +1,20 @@
 import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UserService } from './user.service';
+import { UsersService } from './user.service';
 
-@Controller('user')
-export class UserController {
-  constructor(private readonly usersService: UserService) { }
+@Controller('users')
+export class UsersController {
+  constructor(private readonly usersService: UsersService) { }
 
   @Post()
   async create(@Body() createUserDto: CreateUserDto) {
     try {
 
-      const result = await this.usersService.createUser(createUserDto);
+      const result = await this.usersService.createUser(
+        createUserDto.name,
+        createUserDto.email,
+        createUserDto.password
+      );
       return {
         statusCode: HttpStatus.CREATED,
         data: result
